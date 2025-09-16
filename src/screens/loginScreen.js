@@ -6,11 +6,12 @@ import {
     TextInput,
     TouchableOpacity,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { LoginStyle } from '../styles/loginStyles';
 
 
 export function LoginScreen() {
-
+    const Navigator = useNavigation();
     const [ text, onChangeText ] = useState('');
     const [ number, onChangeNumber ] = useState('');
 
@@ -40,7 +41,7 @@ export function LoginScreen() {
                     keyboardType='numeric'
                     secureTextEntry
                 />
-                <TouchableOpacity onPress={() => {}} style={LoginStyle.button}>
+                <TouchableOpacity onPress={() => Navigator.navigate('Home')} style={LoginStyle.button}>
                     <Text style={LoginStyle.textButton}>Entrar</Text>
                 </TouchableOpacity>
             </View>
