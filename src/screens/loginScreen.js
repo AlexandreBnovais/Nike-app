@@ -3,29 +3,48 @@ import {
     Image,
     View,
     Text,
-    Button,
-    StyleSheet 
+    TextInput,
+    TouchableOpacity,
 } from 'react-native';
+import { LoginStyle } from '../styles/loginStyles';
 
 
 export function LoginScreen() {
-  return (
-    <View style={styles.container}>
-        <Image 
-            source={require('../../assets/login_img.png')} 
-            style={styles.imageContainer}
-        />
 
-    </View>
-  )
+    const [ text, onChangeText ] = useState('');
+    const [ number, onChangeNumber ] = useState('');
+
+    return (
+        <View style={LoginStyle.container}>
+            <Image 
+                source={require('../../assets/login_img.png')} 
+                style={LoginStyle.imageContainer}
+            />
+            <View style={LoginStyle.sectionContainer}>
+                <Text style={LoginStyle.title}>Login</Text>
+
+                <TextInput 
+                    style={LoginStyle.input}
+                    onChangeText={onChangeText}
+                    value={text}
+                    placeholder='EMAIL'
+                    placeholderTextColor={'#144273'}
+                />
+
+                <TextInput 
+                    style={LoginStyle.input}
+                    onChangeText={onChangeNumber}
+                    value={number}
+                    placeholder='SENHA'
+                    placeholderTextColor={'#144273'}
+                    keyboardType='numeric'
+                    secureTextEntry
+                />
+                <TouchableOpacity onPress={() => {}} style={LoginStyle.button}>
+                    <Text style={LoginStyle.textButton}>Entrar</Text>
+                </TouchableOpacity>
+            </View>
+                        
+        </View>
+    )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        height: '100%',
-        backgroundColor: '#0000'
-    },
-    imageContainer: {
-        alignContent: 'center'
-    }
-})
